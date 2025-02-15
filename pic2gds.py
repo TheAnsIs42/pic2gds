@@ -76,6 +76,7 @@ if __name__ == "__main__":
         background="white",
         shape_style={(1, 0): {"fill": "black", "stroke": "none"}},
         scale=1,
+        pad=0,
     )
     lib.add(cell, *cell.dependencies(True))
     lib.write_gds("image.gds")
