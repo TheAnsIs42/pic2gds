@@ -75,7 +75,7 @@ if __name__ == "__main__":
         "test.svg",
         background="white",
         shape_style={(1, 0): {"fill": "black", "stroke": "none"}},
-        scale=1,
+        scaling=1,
         pad=0,
     )
     lib.add(cell, *cell.dependencies(True))
