@@ -3,7 +3,9 @@ import cv2
 import numpy as np
 
 
-def create_striped_regions(gray, pixel_size, min_spacing, stripe_width, main_cell, min_length=3):
+def create_striped_regions(
+    gray, pixel_size, min_spacing, stripe_width, main_cell, min_length=3
+):
     # Define gray level thresholds
     # TODO: non-linear convert from gray level to density
     thresholds = [15, 55, 95, 135, 175, 215, 255]
@@ -55,7 +57,7 @@ def create_striped_regions(gray, pixel_size, min_spacing, stripe_width, main_cel
                 )
                 gray_cell.add(rect)
 
-        main_cell.add(gdstk.Reference(gray_cell)) # Add the gray cell to the main cell
+        main_cell.add(gdstk.Reference(gray_cell))  # Add the gray cell to the main cell
 
 
 # Example usage
@@ -65,11 +67,11 @@ if __name__ == "__main__":
     scaling_factor = 2  # Define your scaling factor here
     gray = cv2.imread("image.jpg", cv2.IMREAD_GRAYSCALE)
     if gray is None:
-        print(
-            f"Error: Could not load image."
-        )
+        print(f"Error: Could not load image.")
         exit(1)
-    gray = cv2.resize(gray, (0, 0), fx=scaling_factor, fy=scaling_factor)  # Scale the image
+    gray = cv2.resize(
+        gray, (0, 0), fx=scaling_factor, fy=scaling_factor
+    )  # Scale the image
     # gray = cv2.GaussianBlur(gray, (5, 5), 0)  # Adjust kernel size as needed
     # cv2.imwrite("processed_image.jpg", gray)
     create_striped_regions(gray, 1, 2, 1, cell, 5)
