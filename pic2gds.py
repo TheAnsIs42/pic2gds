@@ -62,12 +62,14 @@ def create_striped_regions(gray, pixel_size, min_spacing, stripe_width, main_cel
 if __name__ == "__main__":
     lib = gdstk.Library()
     cell = gdstk.Cell("general")
+    scaling_factor = 2  # Define your scaling factor here
     gray = cv2.imread("image.jpg", cv2.IMREAD_GRAYSCALE)
     if gray is None:
         print(
             f"Error: Could not load image."
         )
         exit(1)
+    gray = cv2.resize(gray, (0, 0), fx=scaling_factor, fy=scaling_factor)  # Scale the image
     # gray = cv2.GaussianBlur(gray, (5, 5), 0)  # Adjust kernel size as needed
     # cv2.imwrite("processed_image.jpg", gray)
     create_striped_regions(gray, 1, 2, 1, cell, 5)
